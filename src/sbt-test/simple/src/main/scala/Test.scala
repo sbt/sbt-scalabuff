@@ -1,5 +1,6 @@
 package test
 
 object Test {
-  SimpleTest()
+  test0.Simple()
+  test1.Simple()
 }

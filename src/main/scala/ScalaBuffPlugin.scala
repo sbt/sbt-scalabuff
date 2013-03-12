@@ -61,17 +61,14 @@ object ScalaBuffPlugin extends Plugin {
         (in: Set[File]) => {
           IO.delete(output)
           IO.createDirectory(output)
-          in.foreach { inputFile =>
-            Fork.java(
-              javaHome,
-              List(
-                "-cp", classpath.map(_.data).mkString(File.pathSeparator), mainClass,
-                "--scala_out=" + output.toString,
-                inputFile.toString
-              ) ::: args.toList,
-              streams.log
-            )
-          }
+          Fork.java(
+            javaHome,
+            List(
+              "-cp", classpath.map(_.data).mkString(File.pathSeparator), mainClass,
+              "--scala_out=" + output.toString
+            ) ++ args.toSeq ++ in.toSeq.map(_.toString),
+            streams.log
+          )
           (output ** ("*.scala")).get.toSet
         }
       }
