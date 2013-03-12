@@ -6,6 +6,7 @@ object ScalaBuffBuild extends Build {
     id = "root", 
     base = file("."),
     settings = Defaults.defaultSettings ++ Seq(
+      credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
       publishTo <<= (version) { version: String =>
          val scalasbt = "http://repo.scala-sbt.org/scalasbt/"
          val (name, url) = if (version.contains("-SNAPSHOT"))
