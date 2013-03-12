@@ -11,8 +11,8 @@ object ScalaBuffPlugin extends Plugin {
 
   val scalabuff = TaskKey[Seq[File]]("scalabuff", "Generate Scala sources from protocol buffers definitions")
   val scalabuffArgs = SettingKey[Seq[String]]("scalabuff-args", "Extra command line parameters to scalabuff.")
-  val scalabuffMain = SettingKey[String]("fmpp-main", "FMPP main class.")
-  val scalabuffVersion =  SettingKey[String]("fmpp-version", "FMPP version.")
+  val scalabuffMain = SettingKey[String]("scalabuff-main", "ScalaBuff main class.")
+  val scalabuffVersion =  SettingKey[String]("scalabuff-version", "ScalaBuff version.")
 
   lazy val scalabuffSettings = Seq[Project.Setting[_]](
     scalabuffArgs := Seq(),
