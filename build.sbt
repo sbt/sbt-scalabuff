@@ -2,7 +2,7 @@ sbtPlugin := true
 
 name := "sbt-scalabuff"
 
-version := "0.2-SNAPSHOT"
+version := "0.2"
 
 organization := "com.github.sbt"
 

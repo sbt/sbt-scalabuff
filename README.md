@@ -6,7 +6,7 @@
 
 Adding the plugin:
 
-    addSbtPlugin("com.github.sbt" %% "sbt-scalabuff" % "0.1")
+    addSbtPlugin("com.github.sbt" %% "sbt-scalabuff" % "0.2")
 
 Enable the plugin in your build:
 
