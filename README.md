@@ -13,7 +13,7 @@ Enable the plugin in your build:
     import scalabuff.ScalaBuffPlugin._
 
     object build extends Build {
-      lazy val root = Project("main", file("."), settings = Defaults.defaultSettings ++ scalaBuffSettings).configs(ScalaBuff)
+      lazy val root = Project("main", file("."), settings = Defaults.defaultSettings ++ scalabuffSettings).configs(ScalaBuff)
     }
 
 Once activated place your '.proto' definition in *src/main/protobuf* and that's all!
