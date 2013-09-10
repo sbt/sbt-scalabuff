@@ -17,7 +17,7 @@ object ScalaBuffPlugin extends Plugin {
   lazy val scalabuffSettings = Seq[Project.Setting[_]](
     scalabuffArgs := Seq(),
     scalabuffMain := "net.sandrogrzicic.scalabuff.compiler.ScalaBuff",
-    scalabuffVersion := "1.3.6",
+    scalabuffVersion := "1.3.7-SNAPSHOT",
     libraryDependencies <++= (scalabuffVersion in ScalaBuff)(version => 
       Seq(
         "net.sandrogrzicic" %% "scalabuff-compiler" % version % ScalaBuff.name,
@@ -65,8 +65,9 @@ object ScalaBuffPlugin extends Plugin {
             javaHome,
             List(
               "-cp", classpath.map(_.data).mkString(File.pathSeparator), mainClass,
+              "--proto_path=" + input.toString, // processing single .proto files conflicts with protobuf import statements -> rather re-process all .protos if any has changed
               "--scala_out=" + output.toString
-            ) ++ args.toSeq ++ in.toSeq.map(_.toString),
+            ),
             streams.log
           )
           (output ** ("*.scala")).get.toSet
