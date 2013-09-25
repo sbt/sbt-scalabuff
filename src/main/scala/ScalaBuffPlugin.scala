@@ -21,7 +21,10 @@ object ScalaBuffPlugin extends Plugin {
     libraryDependencies <++= (scalabuffVersion in ScalaBuff)(version => 
       Seq(
         "net.sandrogrzicic" %% "scalabuff-compiler" % version % ScalaBuff.name,
-        "net.sandrogrzicic" %% "scalabuff-runtime" % version
+        "net.sandrogrzicic" %% "scalabuff-runtime" % version excludeAll(
+		  ExclusionRule(organization = "com.google.protobuf")
+		),
+		"com.google.protobuf" %% "protobuf-java" % "2.4.1"
       )
     ),
     sourceDirectory in ScalaBuff <<= (sourceDirectory in Compile),
