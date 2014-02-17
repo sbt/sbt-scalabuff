@@ -56,7 +56,7 @@ object ScalaBuffPlugin extends Plugin {
   ): Seq[File] = {
     val input = source / "protobuf"
     if (input.exists) {
-      val output = sourceManaged / "scala"
+      val output = sourceManaged / "main"
       val cached = FileFunction.cached(cache / "scalabuff", FilesInfo.lastModified, FilesInfo.exists) {
         (in: Set[File]) => {
           IO.delete(output)
