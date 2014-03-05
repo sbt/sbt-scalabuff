@@ -2,10 +2,10 @@ sbtPlugin := true
 
 name := "sbt-scalabuff"
 
-version := "1.3.6"
+version := "1.3.7"
 
 organization := "com.github.sbt"
 
-scalaVersion        := "2.10.3"
+crossBuildingSettings
 
-crossScalaVersions  := Seq("2.9.2", "2.10.3")
+CrossBuilding.crossSbtVersions := Seq("0.12", "0.13")
