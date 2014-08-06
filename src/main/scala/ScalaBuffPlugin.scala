@@ -17,14 +17,14 @@ object ScalaBuffPlugin extends Plugin {
   lazy val scalabuffSettings = Seq[Project.Setting[_]](
     scalabuffArgs := Seq(),
     scalabuffMain := "net.sandrogrzicic.scalabuff.compiler.ScalaBuff",
-    scalabuffVersion := "1.3.7-SNAPSHOT",
+    scalabuffVersion := "1.3.8",
     libraryDependencies <++= (scalabuffVersion in ScalaBuff)(version => 
       Seq(
         "net.sandrogrzicic" %% "scalabuff-compiler" % version % ScalaBuff.name,
         "net.sandrogrzicic" %% "scalabuff-runtime" % version excludeAll(
 		  ExclusionRule(organization = "com.google.protobuf")
 		),
-		"com.google.protobuf" %% "protobuf-java" % "2.4.1"
+		"com.google.protobuf" % "protobuf-java" % "2.5.0"
       )
     ),
     sourceDirectory in ScalaBuff <<= (sourceDirectory in Compile),
