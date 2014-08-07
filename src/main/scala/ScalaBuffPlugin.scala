@@ -70,7 +70,7 @@ object ScalaBuffPlugin extends Plugin {
               "-cp", classpath.map(_.data).mkString(File.pathSeparator), mainClass,
               "--proto_path=" + input.toString, // processing single .proto files conflicts with protobuf import statements -> rather re-process all .protos if any has changed
               "--scala_out=" + output.toString
-            ),
+            ) ++ args,                          // forward command line args to ScalaBuff - this is required for supporting Scala 2.11 builds
             streams.log
           )
           (output ** ("*.scala")).get.toSet
